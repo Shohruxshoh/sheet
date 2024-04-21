@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1 style="text-align: center;"> My google OAuth Project </h1>
+{% if user.is_authenticated %}
+<p>Welcome. You are logged in as {{user.username}} </p>
+
+<a href="{{authorization_url}}">Google++</a>
+{% else %}
+<a href="{% url 'social:begin' 'google-oauth2' %}">Google+</a>
+<!--<form action="{% url 'social:begin' 'google-oauth2' %}" method="POST">-->
+<!--    {% csrf_token %}-->
+<!--    <button type="submit">Disconnect</button>-->
+<!--</form>-->
+
+{% if document_text %}
+    <h2>Document Text:</h2>
+    <p>{{ document_text }}</p>
+{% endif %}
+{% endif %}
+</body>
+</html>
